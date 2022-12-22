@@ -34,7 +34,7 @@ export const CartProvider = ({ children }: iDefaultProviderProps) => {
                }
             })()
          }else if (!token) {
-            navigate("/")
+            // navigate("/")
           }
       }
       autoLogin()

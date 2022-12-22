@@ -12,12 +12,13 @@ export const UserContext = createContext({} as iUserContext);
 
 export const UserProvider = ({ children }: iDefaultProviderProps) => {
 
+   const [loading, setLoading] = useState(false)
    const [user, setUser] = useState<iUserData | null>(null)
    const navigate = useNavigate()
 
    console.log(user)
 
-   const userRegister = async (formData: iRegisterFormValues, setLoading: React.Dispatch<React.SetStateAction<boolean>>) => {
+   const userRegister = async (formData: iRegisterFormValues) => {
       try {
         setLoading(true)
         const response = await api.post<iUserData>("/users", formData)
@@ -31,7 +32,7 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
       }
    }
 
-   const userLogin = async (formData: iLoginFormValues, setLoading: React.Dispatch<React.SetStateAction<boolean>>) => {
+   const userLogin = async (formData: iLoginFormValues) => {
       try {
         setLoading(true)
         const response = await api.post<iUserData>("/login", formData)
@@ -43,10 +44,11 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
       } catch (error: any) {
         console.log(error)
         toast.error(error.response.data)
+        navigate("/")
       } finally {
          setLoading(false)
       }
    }
 
-   return <UserContext.Provider value={{ user, userRegister, userLogin }}>{children}</UserContext.Provider>
+   return <UserContext.Provider value={{ loading, user, userRegister, userLogin }}>{children}</UserContext.Provider>
 }
