@@ -38,7 +38,7 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
         console.log(response.data)
         toast.success(`${response.data.user.name.toUpperCase().trim()}, seja bem vindo(a)!`)
         setUser(response.data)
-        localStorage.setItem("@TOKEN-HAMB", response.data.accessToken)
+        localStorage.setItem("@BURGUER", response.data.accessToken)
         navigate("/home")
       } catch (error: any) {
         console.log(error)
