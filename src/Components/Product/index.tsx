@@ -1,4 +1,4 @@
-import { iProductsData } from "../../Contexts/CartContext/@types"
+import { iProductsData } from "../../Contexts/UserContext/@types" 
 
 // const Product = ({ id, productName, src, productCategory, productPrice, onClick } : iProductsData) => {
   
