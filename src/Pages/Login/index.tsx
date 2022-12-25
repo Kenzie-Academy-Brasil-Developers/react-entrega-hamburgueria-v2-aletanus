@@ -12,14 +12,15 @@ import { StyledButton, StyledLink } from '../../Styles/buttons-style'
 
 const LoginPage = () => {
 
-  const [loading, setLoading] = useState(false)  
-  const { register, handleSubmit, formState: {errors}, reset } = useForm<iLoginFormValues>({
+    const { userLogin } = useContext(UserContext)
+    const [loading, setLoading] = useState(false)  
+    
+    const { register, handleSubmit, formState: {errors}, reset } = useForm<iLoginFormValues>({
     mode: "onChange",
     resolver: yupResolver(loginSchema)
-  })  
-  const { userLogin } = useContext(UserContext)
-
-  const submit: SubmitHandler<iLoginFormValues> = async (formData) => {
+    })  
+    
+    const submit: SubmitHandler<iLoginFormValues> = async (formData) => {
     userLogin(formData, setLoading)
     reset()
   }
@@ -53,7 +54,7 @@ const LoginPage = () => {
 
                 <form noValidate onSubmit={handleSubmit(submit)}>
                     
-                    <Input type="text" label='Email' id="email" placeholder='Seu e-mail' register={register("email")} disabled={loading} />
+                    <Input type="text" id="email" placeholder='Seu e-mail' register={register("email")} disabled={loading} />
                     {errors.email && <p className="p-error" aria-label="Error: E-mail">{errors.email.message}</p>}
                     
                     <Input type="password" label='Senha' id={'password'} placeholder='Sua senha' register={register("password")} disabled={loading} autoComplete='autoComplete'/>

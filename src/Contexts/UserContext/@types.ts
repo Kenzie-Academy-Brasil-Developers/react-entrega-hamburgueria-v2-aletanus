@@ -16,10 +16,44 @@ export interface iUser {
     email: string;
 }
 
+export type iProductsDataList = iProductsData[] 
+
+export interface iProductsData {
+    category: string;
+    id: number;
+    img: string;
+    name: string;
+    price: number | string;
+    count: number;
+}
+export interface iCartProducts {
+    category: string;
+    id: number;
+    img: string;
+    name:string;
+    price:number | string;
+    count:number;
+    // [item: string | number] : any;
+}
+
 export interface iUserContext {
-    loading: boolean;
-    user: iUserData | null;
+    
+    loading: boolean
+    user: iUserData | null
     userRegister: (formData: iRegisterFormValues, setLoading: React.Dispatch<React.SetStateAction<boolean>>) => void
     userLogin: (formData: iLoginFormValues, setLoading: React.Dispatch<React.SetStateAction<boolean>>) => void
-    // userLogout: () => void
+    userLogout: () => void
+    searchItem: (event:React.FormEvent<HTMLFormElement>) => void 
+
+    products: iProductsDataList | null
+    setProducts: React.Dispatch<React.SetStateAction<iProductsDataList | null>>
+    
+    filteredProdutcs: iProductsDataList | null
+    setFilteredProdutcs: React.Dispatch<React.SetStateAction<iProductsDataList | null>>
+
+    itensCounter: number
+    setItensCounter: React.Dispatch<React.SetStateAction<number>>
+
+    cartProducts: iCartProducts[]
+    setCartProducts: React.Dispatch<React.SetStateAction<iCartProducts[]>>
 }

@@ -1,23 +1,32 @@
 import React from 'react'
-import { FieldError, UseFormRegisterReturn } from 'react-hook-form'
+import { iInputProps } from './@types';
+import TextField from '@material-ui/core/TextField'
+import {ThemeProvider, createTheme } from "@material-ui/core/styles"
 
-interface iInputProps{
-    label?: string;
-    id: string;
-    type: "text" | "email" | "password" | "number";
-    placeholder?: string;
-    autoComplete?: string;
-    disabled?: boolean;
-    register: UseFormRegisterReturn;
-    error?: FieldError;
-}
+const theme = createTheme ({
+  palette: {
+    primary: {
+      main: "#27AE60",
+    },
+    secondary: {
+      main: "#EB5757",
+    },
+  },
+  // textField: {
+  //   color: "#f1d045",
+  // },
+})
 
-const Input = ({ type, id, label, placeholder, autoComplete, disabled, register, error }: iInputProps) => {
+const Input = ({ type, id, placeholder, autoComplete, disabled, register, error }: iInputProps) => {
   return (
-    <fieldset>
-        {label && <label htmlFor={id}>{label}</label>}
-        <input type={type} id={id} placeholder={placeholder} autoComplete={autoComplete} {...register} disabled={disabled}/>
-        {/* {error && <p>{error.message}</p>} */}
+
+    <fieldset> 
+      <ThemeProvider theme = {theme}>
+        <TextField 
+          fullWidth  variant="outlined" label={placeholder} type={type} id={id}
+          autoComplete={autoComplete} {...register} disabled={disabled}
+        />
+      </ThemeProvider>
     </fieldset>    
   )
 }
