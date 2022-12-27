@@ -10,7 +10,7 @@ export const StyledButton = styled.button`
 
         color: var(--grey-0);
         font-size: var(--unit-rem-16);
-        font-weight: var(--font-weight-4);
+        font-weight: var(--font-weight-6);
         line-height: var(--font-line-height-1);
 
         height: 48px;
@@ -43,7 +43,7 @@ export const StyledButton = styled.button`
 
         color: var(--grey-0);
         font-size: var(--unit-rem-16);
-        font-weight: var(--font-weight-4);
+        font-weight: var(--font-weight-6);
         line-height: var(--font-line-height-1);
 
         height: 48px;
@@ -72,7 +72,7 @@ export const StyledLink = styled(Link)`
     
         color: var(--grey-50);
         font-size: var(--unit-rem-16);
-        font-weight: var(--font-weight-4);
+        font-weight: var(--font-weight-6);
         line-height: var(--font-line-height-1);
 
         height: 48px;

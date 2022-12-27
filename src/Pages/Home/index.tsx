@@ -6,69 +6,87 @@ import { CartContext } from '../../Contexts/CartContext'
 import { UserContext } from '../../Contexts/UserContext'
 import { FormSearchBar } from '../../Components/FormSearchBar'
 import { ModalCart } from '../../Components/Modal'
+import { StyledHome } from './home-style'
+import {ThemeProvider, createTheme } from "@material-ui/core/styles"
 
 const HomePage = () => {
   
   const { userLogout, filteredProdutcs, itensCounter } = useContext(UserContext)
   const { addToCart, modal, modalCartToogle } = useContext(CartContext)
 
+  const theme = createTheme ({
+    palette: {
+      primary: {
+        main: "#27AE60",
+      },
+      secondary: {
+        main: "#EB5757",
+      },
+    },
+  })
+
   return (
 
-    <>
+    <StyledHome>
 
       { modal && (<ModalCart/>) }
 
 
         <header>
         
-          <figure>
-            <img src={logo} alt="Kenzie Hub logo" />
-          </figure>
-        
-          <FormSearchBar/>
-          
-          <div>
-            <button>
-              <ShoppingCartIcon onClick={() => modalCartToogle() } />
-            </button>
-            <p>{itensCounter}</p>
+          <div className='container'>
+
+            <div>
+              <figure>
+                <img src={logo} alt="Kenzie Hub logo" />
+              </figure>
+      
+              <nav>
+  
+                <div>
+                  <button>
+                    <ShoppingCartIcon className='shoppingIcon' onClick={() => modalCartToogle() } />
+                  </button>
+                  <p onClick={() => modalCartToogle() } >{itensCounter}</p>
+                </div>
+              
+                <button>
+                  <ExitToAppIcon className='exitIcon' onClick={() => userLogout()}/>
+                </button>
+              </nav>
+            </div>
+
+            <ThemeProvider theme = {theme}>
+              <FormSearchBar/>
+            </ThemeProvider>
+
           </div>
-        
-          <button>
-            <ExitToAppIcon onClick={() => userLogout()}/>
-          </button>
         
         </header>
         
         <main>
         
           <ul>
-              {/* {
-                products && products.map((product) => (
-                  <Product
-                    key={`${product.id}`} id={product.id} productName={product.name} 
-                    src={product.img} productCategory={product.category} 
-                    productPrice={product.price} onClick={() => addToCart(product)}
-                />)
-                )
-              } */}
         
-              {
-                filteredProdutcs && filteredProdutcs.map((product) => (
-                  <li key={`${product.id}`} >
+            {
+              filteredProdutcs && filteredProdutcs.map((product) => (
+                
+                <li key={`${product.id}`} >
         
+                  <figure>
+                    <img src={product.img} alt="Edit"/>
+                  </figure>
+
+                  <div>
                     <h2>{product.name}</h2>
-                      <figure>
-                        <img src={product.img} alt="Edit"/>
-                      </figure>
-                    
                     <p>{product.category}</p>
                     <p>{ product.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL'}) }</p>
-                    <button onClick={() => addToCart(product)}>Adicionar</button>
+                    <button className='green-button-default' onClick={() => addToCart(product)}>Adicionar</button>
+                  </div>
         
-                  </li>
-                ))
-              }
+                </li>
+              ))
+            }
         
         
           </ul>
@@ -77,7 +95,7 @@ const HomePage = () => {
 
     
   
-    </>
+    </StyledHome>
   )
 }
 

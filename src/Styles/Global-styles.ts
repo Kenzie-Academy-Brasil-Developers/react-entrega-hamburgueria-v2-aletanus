@@ -6,6 +6,11 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        border-style: none;
+    }
+
+    body {
+        background-color: var(--grey-0);
     }
 
     button{

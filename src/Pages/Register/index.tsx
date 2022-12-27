@@ -9,6 +9,7 @@ import { yupResolver} from '@hookform/resolvers/yup'
 import { registerSchema } from './registerSchema' 
 import { UserContext } from '../../Contexts/UserContext'
 import { StyledButton, StyledLink } from '../../Styles/buttons-style'
+import { StyledRegister } from './register-style'
 
 const RegisterPage = () => {
 
@@ -26,11 +27,11 @@ const RegisterPage = () => {
   
   return (
 
-    <>
+    <StyledRegister>
 
       <div className='brand'>
 
-        <figure>
+        <figure className='logo'>
             <img src={logo} alt="Kenzie Hub logo" />
         </figure>
 
@@ -41,42 +42,46 @@ const RegisterPage = () => {
             <p>A vida é como um sanduíche, é preciso recheá-la com os <span>melhores</span> ingredientes.</p>
         </div>
 
-        <figure>
-            <img hidden={true} src={dots} alt="Kenzie Hub logo" />
+        <figure className='dots'>
+            <img src={dots} alt="Dots style" />
         </figure>
 
       </div>
 
-      <div>
+      <div className='content'>
 
-        <div>
+        <div className='content-header'>
           <h1>Cadastro</h1>
           <StyledLink className="grey-Link" to={"/"}>Retornar para o login</StyledLink>
         </div>
 
-        <form noValidate onSubmit={handleSubmit(submit)}>
-          
-          <Input type="text" id="name" label="Nome " placeholder="Digite aqui o seu nome" register={register("name")} disabled={loading}/>
-          {errors.name && <p className="p-error" aria-label="Error: Name">{errors.name.message}</p>}
-  
-          <Input type="text" label='Email' id="email" placeholder='Seu e-mail' register={register("email")} disabled={loading} />
-          {errors.email && <p className="p-error" aria-label="Error: E-mail">{errors.email.message}</p>}
-          
-          <Input type="password" label='Senha' id={'password'} placeholder='Sua senha' register={register("password")} disabled={loading} autoComplete='autoComplete'/>
-          {errors.password && <p className="p-error" aria-label="Error: Password">{errors.password.message}</p>}
-                  
-          <Input autoComplete="autoComplete" type="password" id="passwordConfirm" label="Confirmar Senha " placeholder="Confirme aqui a sua senha" register={register("passwordConfirm")} disabled={loading} />
-          {errors.passwordConfirm && <p className="p-error" aria-label="Error: Password Confirmation">{errors.passwordConfirm.message}</p>}
-                  
-          <StyledButton className="green-button-default" type="submit" disabled={loading}>
-            {loading ? 'Entrando...' : 'Cadastrar'}
-          </StyledButton>
-  
-        </form>
+        <div>
+
+          <form noValidate onSubmit={handleSubmit(submit)}>
+           
+            <Input type="text" id="name" label="Nome " placeholder="Digite aqui o seu nome" register={register("name")} disabled={loading}/>
+            {errors.name && <p className="p-error" aria-label="Error: Name">{errors.name.message}</p>}
+        
+            <Input type="text" label='Email' id="email" placeholder='Seu e-mail' register={register("email")} disabled={loading} />
+            {errors.email && <p className="p-error" aria-label="Error: E-mail">{errors.email.message}</p>}
+           
+            <Input type="password" label='Senha' id={'password'} placeholder='Sua senha' register={register("password")} disabled={loading} autoComplete='autoComplete'/>
+            {errors.password && <p className="p-error" aria-label="Error: Password">{errors.password.message}</p>}
+                   
+            <Input autoComplete="autoComplete" type="password" id="passwordConfirm" label="Confirmar Senha " placeholder="Confirme aqui a sua senha" register={register("passwordConfirm")} disabled={loading} />
+            {errors.passwordConfirm && <p className="p-error" aria-label="Error: Password Confirmation">{errors.passwordConfirm.message}</p>}
+                   
+            <StyledButton className="green-button-default" type="submit" disabled={loading}>
+              {loading ? 'Entrando...' : 'Cadastrar'}
+            </StyledButton>
+        
+          </form>
+
+        </div>
 
       </div>
 
-    </> 
+    </StyledRegister> 
 
   )
 }

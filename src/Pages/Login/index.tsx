@@ -9,6 +9,7 @@ import { iLoginFormValues } from './@types'
 import { yupResolver} from '@hookform/resolvers/yup'
 import { loginSchema } from './loginSchema'
 import { StyledButton, StyledLink } from '../../Styles/buttons-style'
+import { StyledLogin } from './home-style'
 
 const LoginPage = () => {
 
@@ -27,10 +28,11 @@ const LoginPage = () => {
 
   return (
 
-    <>
+    <StyledLogin>
 
         <div className='brand'>
-            <figure>
+
+            <figure className='logo'>
                 <img src={logo} alt="Kenzie Hub logo" />
             </figure>
 
@@ -41,12 +43,12 @@ const LoginPage = () => {
                 <p>A vida é como um sanduíche, é preciso recheá-la com os <span>melhores</span> ingredientes.</p>
             </div>
 
-            <figure>
-                <img hidden={true} src={dots} alt="Kenzie Hub logo" />
+            <figure className='dots'>
+                <img src={dots} alt="Dots style" />
             </figure>
         </div>
 
-        <div>
+        <div className='content'>
 
             <h1>Login</h1>
 
@@ -67,14 +69,14 @@ const LoginPage = () => {
                 </form>
                 
                 <p>Crie sua conta para saborear muitas delícias e matar sua fome!</p>
-                
+
                 <StyledLink className="grey-Link" to={"/register"}>Cadastrar</StyledLink>
             
             </div>
         
         </div>
 
-    </>
+    </StyledLogin>
 
   )
 }
