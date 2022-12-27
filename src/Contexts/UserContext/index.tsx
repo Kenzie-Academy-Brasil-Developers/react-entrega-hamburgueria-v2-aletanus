@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom"
 import { iLoginFormValues } from "../../Pages/Login/@types" 
 import { iRegisterFormValues } from "../../Pages/Register/@types" 
 import { iDefaultProviderProps } from "../@types" 
-import { iCartProducts, iProductsDataList, iUserContext, iUserData } from "./@types"
+import { iProductsDataList, iUserContext, iUserData } from "./@types"
 
 export const UserContext = createContext({} as iUserContext)
 
@@ -16,8 +16,10 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
   const [user, setUser] = useState<iUserData | null>(null)
   const [products, setProducts] = useState<iProductsDataList | null>(null)
   const [filteredProdutcs, setFilteredProdutcs] = useState<iProductsDataList | null>(null)
-  const [cartProducts, setCartProducts] = useState<iCartProducts[] | []>([])
+  // const [cartProducts, setCartProducts] = useState<iCartProducts[] | []>([])
   const [itensCounter, setItensCounter] = useState(0)
+
+  // console.log(cartProducts)
 
   const navigate = useNavigate()
 
@@ -113,5 +115,5 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
     setFilteredProdutcs(searchedProducts)
   }
 
-  return <UserContext.Provider value={{ loading, user, userRegister, userLogin, userLogout, searchItem, products, setProducts, cartProducts, setCartProducts, filteredProdutcs, setFilteredProdutcs, itensCounter, setItensCounter }}>{children}</UserContext.Provider>
+  return <UserContext.Provider value={{ loading, user, userRegister, userLogin, userLogout, searchItem, products, setProducts, filteredProdutcs, setFilteredProdutcs, itensCounter, setItensCounter }}>{children}</UserContext.Provider>
 }

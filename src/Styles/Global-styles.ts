@@ -29,6 +29,7 @@ const GlobalStyle = createGlobalStyle`
 
     :root{
     --font-family-1: font-family: 'Inter', sans-serif;
+    --backgroud-opacity: #12121478;
     --color-primary: #27AE60;
     --color-primary-opacity: #4bd786;
     --color-primary-50:#93D7AF;
