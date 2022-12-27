@@ -1,18 +1,16 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import logo from '../../Assets/Logo_Burguer Kenzie.svg'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import { CartContext } from '../../Contexts/CartContext'
-// import Product from '../../Components/Product'
-// import { iProductsDataList, iProductsData } from '../../Contexts/CartContext/@types'
 import { UserContext } from '../../Contexts/UserContext'
 import { FormSearchBar } from '../../Components/FormSearchBar'
 import { ModalCart } from '../../Components/Modal'
 
 const HomePage = () => {
   
-  const { userLogout, products, filteredProdutcs, itensCounter, setItensCounter, } = useContext(UserContext)
-  const { addToCart, modal, setModal, modalCartToogle } = useContext(CartContext)
+  const { userLogout, filteredProdutcs, itensCounter } = useContext(UserContext)
+  const { addToCart, modal, modalCartToogle } = useContext(CartContext)
 
   return (
 

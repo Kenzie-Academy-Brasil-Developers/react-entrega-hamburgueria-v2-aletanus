@@ -1,13 +1,9 @@
-import { api } from "../../Api/api" 
 import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
-import { createContext, useContext, useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { createContext, useContext, useState } from "react"
 import { iDefaultProviderProps } from "../@types" 
 import { iProductsContext, iCartProducts } from "./@types"
 import { UserContext } from "../UserContext"
-import { boolean, object } from "yup"
-import Product from "../../Components/Product"
 
 export const CartContext = createContext({} as iProductsContext)
 
@@ -16,14 +12,14 @@ export const CartProvider = ({ children }: iDefaultProviderProps) => {
    const { products, setItensCounter } = useContext (UserContext)
    const [cartProducts, setCartProducts] = useState<iCartProducts[] | []>([])
    const [modal, setModal] = useState(false)
+   const [cartTotalPrice, setCartTotalPrice] = useState(0)
 
    const addToCart = (product:iCartProducts) => {
       if (!cartProducts.some((cartProduct) => cartProduct.id === product.id)) {
          let productCount = product.count += 1
-         let newProductList = ([...cartProducts, product].sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase())))
+         let newProductList = ([...cartProducts, product])
          setCartProducts(newProductList)
-         localStorage.setItem("@BURGUER.CART", JSON.stringify(newProductList))
-         cartProductCounter(newProductList)
+         cartProductManager (newProductList)
          toast.success("Novo produto salvo com sucesso!")
       } else {
          toast.warning("Produto já adicionado!")
@@ -40,14 +36,14 @@ export const CartProvider = ({ children }: iDefaultProviderProps) => {
       const newProductsList = [...oldProductsList, product]
       setCartProducts(newProductsList)
       cartProductManager (cartProducts)
-      // cartProductCounter(cartProducts)
    }
 
    const cartProductManager = (lastProductsList:iCartProducts[]) => {
-      const updatedProductsList = (lastProductsList.filter(product => product.count > 0).sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase())))
-      localStorage.setItem("@BURGUER.CART", JSON.stringify(updatedProductsList))
-      cartProductCounter(updatedProductsList)
-      setCartProducts(updatedProductsList)
+      const updatedProductList = (lastProductsList.filter(product => product.count > 0).sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase())))
+      localStorage.setItem("@BURGUER.CART", JSON.stringify(updatedProductList))
+      totalPrice(updatedProductList)
+      cartProductCounter(updatedProductList)
+      setCartProducts(updatedProductList)
    }
 
    const cartProductCounter = (updatedProductsList:iCartProducts[]) => {
@@ -68,11 +64,12 @@ export const CartProvider = ({ children }: iDefaultProviderProps) => {
       }
    }
 
-   const totalPrice = () => {
+   const totalPrice = (updatedProductList:iCartProducts[]) => {
+      let intensPrice = updatedProductList.map(product =>  product.totalPrice = product.count * product.price)
+      let totalPrice = updatedProductList.reduce((acc, act) => acc + Number(act.totalPrice), 0)
+      setCartTotalPrice(totalPrice)
       
    } 
 
-
-
-   return <CartContext.Provider value={{ addToCart, cartProducts, setCartProducts, modal, setModal, modalCartToogle, oneMoreOrLessProduct, cartProductManager, cartProductCounter, removeFromCart }}>{children}</CartContext.Provider>
+   return <CartContext.Provider value={{ addToCart, cartProducts, setCartProducts, modal, setModal, modalCartToogle, oneMoreOrLessProduct, cartProductManager, cartProductCounter, removeFromCart, cartTotalPrice, setCartTotalPrice, totalPrice }}>{children}</CartContext.Provider>
 }

@@ -23,19 +23,10 @@ export interface iProductsData {
     id: number;
     img: string;
     name: string;
-    price: number | string;
+    price: number;
     count: number;
+    totalPrice:number | string;
 }
-
-// export interface iCartProducts {
-//     category: string;
-//     id: number;
-//     img: string;
-//     name:string;
-//     price:number | string;
-//     count:number;
-//     // [item: string | number] : any;
-// }
 
 export interface iUserContext {
     
@@ -54,7 +45,4 @@ export interface iUserContext {
 
     itensCounter: number
     setItensCounter: React.Dispatch<React.SetStateAction<number>>
-
-    // cartProducts: iCartProducts[]
-    // setCartProducts:React.Dispatch<React.SetStateAction<iCartProducts[] | []>>
 }

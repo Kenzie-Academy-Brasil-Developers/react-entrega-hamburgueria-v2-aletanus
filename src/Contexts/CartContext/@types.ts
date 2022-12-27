@@ -5,30 +5,24 @@ export interface iCartProducts {
     id: number;
     img: string;
     name:string;
-    price:number | string;
+    price:number;
     count:number;
-    [product: string | number] : any;
+    totalPrice:number | string;
 }
 
 export interface iProductsContext {
-
-    addToCart: (product:iProductsData) => void
-
+ 
     cartProducts: iCartProducts[]
     setCartProducts:React.Dispatch<React.SetStateAction<iCartProducts[] | []>>
-
     modal: boolean
     setModal: React.Dispatch<React.SetStateAction<boolean>>
-    
+    cartTotalPrice: number
+    setCartTotalPrice: React.Dispatch<React.SetStateAction<number>>
+    addToCart: (product:iProductsData) => void
     modalCartToogle: () => void   
-
     oneMoreOrLessProduct: (operation: boolean, product: iCartProducts) => void
-
     cartProductManager: (lastProductsList: iCartProducts[]) => void
-
     cartProductCounter: (updatedProductsList: iCartProducts[]) => void
-
     removeFromCart: (product: number | iCartProducts[]) => void
-    // removeFromCart: (product: iCartProducts[] | React.MouseEvent<SVGSVGElement, MouseEvent>) => void
-    // removeFromCart: (productId: number) => void
+    totalPrice: (updatedProductList: iCartProducts[]) => void
 }

@@ -16,18 +16,12 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
   const [user, setUser] = useState<iUserData | null>(null)
   const [products, setProducts] = useState<iProductsDataList | null>(null)
   const [filteredProdutcs, setFilteredProdutcs] = useState<iProductsDataList | null>(null)
-  // const [cartProducts, setCartProducts] = useState<iCartProducts[] | []>([])
   const [itensCounter, setItensCounter] = useState(0)
-
-  // console.log(cartProducts)
-
   const navigate = useNavigate()
 
   useEffect(() => {
-
     const token = localStorage.getItem("@BURGUER")
     const autoLogin = async () => {
-
       if (token) {
         console.log("TOKEN FOUND")
         navigate("/home")          
@@ -40,7 +34,6 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
   }, [])   
 
   const userLogin = async (formData: iLoginFormValues) => {
-
     try {
       setLoading(true)
       const response = await api.post<iUserData>("/login", formData)
@@ -62,14 +55,15 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
   }
 
   const getProducts = async () => {
-
     const token = localStorage.getItem("@BURGUER")
     if (token) {
-
       try {
         api.defaults.headers.authorization = `Bearer ${token}`
         const response = await api.get<iProductsDataList>("/products")
-        const newProductProp = response.data.map( product => (product.count = 0))
+        const newProductProp = response.data.map( product => (
+          product.count = 0,
+          product.totalPrice = 0
+        ))
         setProducts(response.data)
         setFilteredProdutcs(response.data)
         navigate("/home")
@@ -83,7 +77,6 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
   }
 
   const userRegister = async (formData: iRegisterFormValues) => {
-
     try {
       setLoading(true)
       const response = await api.post<iUserData>("/users", formData)
@@ -98,14 +91,12 @@ export const UserProvider = ({ children }: iDefaultProviderProps) => {
   }
 
   function userLogout() {
-
     localStorage.removeItem("@BURGUER")
     setUser(null)
     navigate("/")
   }
 
   const searchItem = (event:React.FormEvent<HTMLFormElement>) => {
- 
     event.preventDefault ()
     const targetElement = (event.target as HTMLInputElement).children
     const targetElementValue = (targetElement[1].children[1].children[0] as HTMLInputElement).value

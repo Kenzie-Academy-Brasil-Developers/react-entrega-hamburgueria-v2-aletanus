@@ -5,7 +5,7 @@ import GlobalStyle from './Styles/Global-styles'
 import { UserProvider } from './Contexts/UserContext' 
 import { CartProvider } from './Contexts/CartContext'
 
-function App() {
+const App = () => {
 
   return (
     <div className="App">

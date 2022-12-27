@@ -2,8 +2,6 @@ import styled from "styled-components"
 
 export const StyledModalCart = styled.div`
 
-    /* position: fixed; */
-
     position: fixed;
     display: flex;
     align-items: center;
@@ -146,15 +144,20 @@ export const StyledModalCart = styled.div`
         width: 100%;
     }
 
-    .container > main > footer > div > .total  {
+    .container > main > footer > .totalPrice  {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .container > main > footer > .totalPrice > .total  {
         font-family: var(--font-family-1);
         font-size: var(--unit-rem-14);
         font-weight: var(--font-weight-6);
         line-height: var(--font-line-height-1);
     }
 
-    .container > main > footer > div > .price  {
-        color: var(--grey-20);
+    .container > main > footer > .totalPrice > .price  {
+        color: var(--grey-50);
         font-family: var(--font-family-1);
         font-size: var(--unit-rem-14);
         font-weight: var(--font-weight-6);

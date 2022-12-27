@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import { CartContext } from "../../Contexts/CartContext"
 import { UserContext } from "../../Contexts/UserContext"
 import { StyledModalCart } from "./style" 
@@ -7,7 +7,7 @@ import DeleteIcon from '@material-ui/icons/Delete'
 export const ModalCart = () => {
 
   const { itensCounter } = useContext (UserContext)
-  const { cartProducts, setCartProducts, setModal, oneMoreOrLessProduct, removeFromCart } = useContext (CartContext)
+  const { cartProducts, setCartProducts, setModal, oneMoreOrLessProduct, removeFromCart, cartTotalPrice } = useContext (CartContext)
 
   return (
 
@@ -63,9 +63,9 @@ export const ModalCart = () => {
 
               <footer>
                 <div className="div-line"></div>
-                <div>
+                <div className="totalPrice">
                   <span className="total">Total</span>
-                  <span className="price"></span>
+                  <span className="price">{ cartTotalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL'}) }</span>
                 </div>
                 <button onClick={() => removeFromCart(cartProducts)}>Remover todos</button>
               </footer>
