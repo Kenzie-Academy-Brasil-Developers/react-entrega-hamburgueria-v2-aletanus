@@ -56,29 +56,23 @@ export const CartProvider = ({ children }: iDefaultProviderProps) => {
    }
 
    const removeFromCart = (product: number | iCartProducts[]) => {
-
-      // product > 0 ? setCartProducts(cartProducts.filter(productListed => productListed.id !== product)) : product.splice()
-
-      if (product > 0){
-
-         let productToBeDeleted = cartProducts.filter(productIntheCart =>productIntheCart.id === product)
+      if (typeof product === "number"){
+         let productToBeDeleted = cartProducts.filter(productIntheCart => productIntheCart.id === product)
          productToBeDeleted[0].count = 0
          let lastCartList = cartProducts.filter(productIntheCart => productIntheCart.id !== product)
          let newCartList = [...lastCartList, ...productToBeDeleted]
          cartProductManager(newCartList)
-       
-         ////////////////////PAST SOLUTION
-         // const newProductList = cartProducts.filter(productListed => productListed.id !== product).sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()))
-         // setCartProducts(newProductList)
-         // cartProductCounter(newProductList)
-         // localStorage.setItem("@BURGUER.CART", JSON.stringify(newProductList))
-        
-         console.log(typeof product, product)
       } else {
-         console.log(typeof product, product)
+         let removeAllItens = cartProducts.map(productIntheCart => productIntheCart.count = 0)
+         cartProductManager(product)
       }
-
    }
+
+   const totalPrice = () => {
+      
+   } 
+
+
 
    return <CartContext.Provider value={{ addToCart, cartProducts, setCartProducts, modal, setModal, modalCartToogle, oneMoreOrLessProduct, cartProductManager, cartProductCounter, removeFromCart }}>{children}</CartContext.Provider>
 }
