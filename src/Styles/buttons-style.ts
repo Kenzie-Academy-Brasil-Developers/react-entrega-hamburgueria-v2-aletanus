@@ -17,31 +17,23 @@ export const StyledButton = styled.button`
         width: 100%;
         margin: 0 0 22px;
         padding: 0 16px;
+        transition:0.4s;
     }
 
     &.green-button-default:hover {
+        transition:0.4s;
         background-color: var(--color-primary-50);
         border: solid 1px var(--color-primary-50);
     }
 
-    /* &.green-button-default:active {
-        background-color: var(--color-primary-negative);
-        border: solid 1px var(--color-primary-negative);
-    }
-
-    &.green-button-default:disabled {
-        background-color: var(--grey-1);
-        border: solid 1px var(--grey-1);
-    } */
 
     /* GRAY BUTTON */
-
     &.gray-button-default {
-        background-color: var(--grey-3);
-        border: solid 1px var(--grey-3);
+        background-color: var(--grey-20);
+        border: solid 1px var(--grey-20);
         border-radius: var(--radius-1);
 
-        color: var(--grey-0);
+        color: var(--grey-50);
         font-size: var(--unit-rem-16);
         font-weight: var(--font-weight-6);
         line-height: var(--font-line-height-1);
@@ -50,11 +42,14 @@ export const StyledButton = styled.button`
         width: 100%;
         margin: 0 0 22px;
         padding: 0 16px;
+        transition:0.8s;
     }
 
     &.gray-button-default:hover {
-        background-color: var(--grey-2);
-        border: solid 1px var(--grey-2);
+        transition:0.8s;
+        color: var(--grey-0);
+        background-color: var(--grey-50);
+        border: solid 1px var(--grey-50);
     }
 
 `
@@ -78,9 +73,11 @@ export const StyledLink = styled(Link)`
         height: 48px;
         width: 100%;
         padding: 0 16px;
+        transition:0.8s;
     }
 
     &.grey-Link:hover {
+        transition:0.8s;
         background-color: var(--grey-50);
         border: solid 1px var(--grey-50);
         color: var(--grey-20);

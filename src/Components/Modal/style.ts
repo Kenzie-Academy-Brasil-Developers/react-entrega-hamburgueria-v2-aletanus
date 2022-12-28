@@ -11,6 +11,41 @@ export const StyledModalCart = styled.div`
     transition: 1s;
     width: 100vw;
     height: 100vh;
+    z-index: 2;
+    transition: 1s;
+
+
+    animation: fadeIn 0.8s;
+    -webkit-animation: fadeIn 0.8s;
+    -moz-animation: fadeIn 0.8s;
+    -o-animation: fadeIn 0.8s;
+    -ms-animation: fadeIn 0.8s;
+
+    @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
+    @-moz-keyframes fadeIn {    
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
+    @-webkit-keyframes fadeIn { 
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
+    @-o-keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
+    @-ms-keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
 
    .container {
         width: 80%;
@@ -70,15 +105,24 @@ export const StyledModalCart = styled.div`
         display: flex;
         flex-direction: column;
         gap: var(--unit-rem-16);
+        max-height: 300px;
+        overflow: auto;
+    }
+
+    .container > main > ul::-webkit-scrollbar {
+    width: 0 !important
     }
 
     .container > main > ul > li {
         display: flex;
         justify-content: space-between;
-        height: 80px;
     }
 
-    .container > main > ul > li > figure {
+    .container > main > ul > li > div {
+        display: flex;
+    }
+
+    .container > main > ul > li > div > figure {
         background-color: var(--grey-20);
         border-radius: var(--radius-2);
         display: flex;
@@ -88,22 +132,22 @@ export const StyledModalCart = styled.div`
         width: 80px;
     }
 
-    .container > main > ul > li > figure > img {
+    .container > main > ul > li > div > figure > img {
         height: 80%;
     }
 
-    .container > main > ul > li > div {
+    .container > main > ul > li > div > .div-buttons {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-evenly;
         margin-left: 10px;
     }
 
-    .container > main > ul > li > div > div {
+    .container > main > ul > li > div > .div-buttons > div {
         display: flex;
     }
 
-    .container > main > ul > li > div > div > button { 
+    .container > main > ul > li > div > .div-buttons > div > button { 
         background-color: var(--grey-20);
         border: solid 2px var(--grey-20);
         color: var(--color-secondary);
@@ -111,9 +155,16 @@ export const StyledModalCart = styled.div`
         justify-content: center;
         align-items: center;
         width : var(--unit-rem-32);
+        transition: 0.3s;
     }
 
-    .container > main > ul > li > div > div > p {
+    .container > main > ul > li > div > .div-buttons > div > button:hover {
+        background-color: var(--grey-50-opacity);
+        border: solid 2px var(--grey-50-opacity);
+        transition: 0.3s;
+    }
+
+    .container > main > ul > li > div > .div-buttons > div > p {
         background-color: var(--white);
         border: solid 2px var(--grey-20);
         display: flex;
@@ -128,6 +179,12 @@ export const StyledModalCart = styled.div`
 
     .container > main > ul > li > .MuiSvgIcon-root {
        color: var(--grey-20);
+        transition: 0.6s;
+    }
+
+    .container > main > ul > li > .MuiSvgIcon-root:hover {
+        color: var(--grey-50);
+        transition: 0.6s;
     }
 
     .container > main > footer {
@@ -164,28 +221,52 @@ export const StyledModalCart = styled.div`
         line-height: var(--font-line-height-1);
     }
 
-    /* @media (min-width: 768px) {  
-        div {
-            width: 40%;
+    .container > main > footer > .gray-button-default {
+        margin: 16px 0 4px;
+    }
+
+    @media (min-width: 395px) {  
+ 
+        .container {
+            width: 70%;
+        }
+    }
+
+    @media (min-width: 500px) {  
+ 
+        .container > main > ul > li > div > .div-buttons {
+            margin-left: 40px;
+        }
+    }
+
+    @media (min-width: 550px) {  
+ 
+        .container {
+            width: 65%;
+        }
+    }
+
+    @media (min-width: 720px) {  
+ 
+        .container {
+            width: 60%;
+        }
+
+        .container > main > ul > li > div > .div-buttons {
+            margin-left: 50px;
         }
     }
 
     @media (min-width: 1024px) {
-        div {
-            width: 30%;
+  
+        .container {
+            max-width: 500px;
         }
-    }
 
-    @media (min-width: 1440px){
-        div {
-            width: 25%;
+        .container > main > ul > li > div > .div-buttons {
+            margin-left: 80px;
         }
-    }
 
-    @media (min-width: 2200px){
-        div {
-            width: 20%;
-        }
-    }  */
+    }
     
 `

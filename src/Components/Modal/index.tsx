@@ -3,6 +3,7 @@ import { CartContext } from "../../Contexts/CartContext"
 import { UserContext } from "../../Contexts/UserContext"
 import { StyledModalCart } from "./style" 
 import DeleteIcon from '@material-ui/icons/Delete'
+import { StyledButton } from "../../Styles/buttons-style"
 
 export const ModalCart = () => {
 
@@ -11,7 +12,7 @@ export const ModalCart = () => {
 
   return (
 
-    <StyledModalCart>
+    <StyledModalCart className="modalContainer fade-in-text">
 
     <div className='container'>
 
@@ -42,16 +43,18 @@ export const ModalCart = () => {
                 
                   <li key={product.id}>
                 
-                    <figure>
-                      <img src={product.img} alt={product.name} />
-                    </figure>
-                
                     <div>
-                      <h3>{product.name}</h3>
-                      <div>
-                        <button onClick={() => oneMoreOrLessProduct(false, product)} > - </button>
-                        <p>{product.count}</p>
-                        <button onClick={() => oneMoreOrLessProduct(true, product)}> + </button>
+                      <figure>
+                        <img src={product.img} alt={product.name} />
+                      </figure>
+                  
+                      <div className="div-buttons">
+                        <h3>{product.name}</h3>
+                        <div>
+                          <button onClick={() => oneMoreOrLessProduct(false, product)} > - </button>
+                          <p>{product.count}</p>
+                          <button onClick={() => oneMoreOrLessProduct(true, product)}> + </button>
+                        </div>
                       </div>
                     </div>
                 
@@ -67,7 +70,7 @@ export const ModalCart = () => {
                   <span className="total">Total</span>
                   <span className="price">{ cartTotalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL'}) }</span>
                 </div>
-                <button onClick={() => removeFromCart(cartProducts)}>Remover todos</button>
+                <StyledButton className="gray-button-default" onClick={() => removeFromCart(cartProducts)}>Remover todos</StyledButton>
               </footer>
 
             </>

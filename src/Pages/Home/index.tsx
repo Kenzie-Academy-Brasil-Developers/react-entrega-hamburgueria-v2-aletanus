@@ -8,6 +8,7 @@ import { FormSearchBar } from '../../Components/FormSearchBar'
 import { ModalCart } from '../../Components/Modal'
 import { StyledHome } from './home-style'
 import {ThemeProvider, createTheme } from "@material-ui/core/styles"
+import { StyledButton } from '../../Styles/buttons-style'
 
 const HomePage = () => {
   
@@ -66,22 +67,22 @@ const HomePage = () => {
         
         <main>
         
-          <ul>
+          <ul className='products-container'>
         
             {
               filteredProdutcs && filteredProdutcs.map((product) => (
                 
-                <li key={`${product.id}`} >
+                <li className='product' key={`${product.id}`} >
         
                   <figure>
-                    <img src={product.img} alt="Edit"/>
+                    <img onClick={() => addToCart(product)} src={product.img} alt="Edit"/>
                   </figure>
 
                   <div>
                     <h2>{product.name}</h2>
                     <p>{product.category}</p>
                     <p>{ product.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL'}) }</p>
-                    <button className='green-button-default' onClick={() => addToCart(product)}>Adicionar</button>
+                    <StyledButton className='green-button-default' onClick={() => addToCart(product)}>Adicionar</StyledButton>
                   </div>
         
                 </li>

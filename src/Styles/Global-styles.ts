@@ -42,6 +42,7 @@ const GlobalStyle = createGlobalStyle`
     --white: #ffffff;
     --grey-100: #333333;
     --grey-50:  #828282;
+    --grey-50-opacity:#b1b1b1;
     --grey-20: #E0E0E0;
     --grey-0:  #F5F5F5;
     --pallete_negative:#E60000;
