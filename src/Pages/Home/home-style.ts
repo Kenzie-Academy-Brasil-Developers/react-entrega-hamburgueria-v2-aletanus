@@ -45,6 +45,7 @@ export const StyledHome = styled.main`
     }
 
     header > .container > div > nav > div > p {
+        cursor: pointer;
         position: absolute;
         top: 12px;
         right: 52px;

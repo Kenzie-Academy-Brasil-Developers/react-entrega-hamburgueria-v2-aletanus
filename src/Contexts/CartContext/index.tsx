@@ -22,7 +22,9 @@ export const CartProvider = ({ children }: iDefaultProviderProps) => {
          cartProductManager (newProductList)
          toast.success("Novo produto salvo com sucesso!")
       } else {
-         toast.warning("Produto já adicionado!")
+         let productCount = product.count += 1
+         cartProductManager(cartProducts)
+         toast.success("Novo produto salvo com sucesso!")
       }
    }
 
