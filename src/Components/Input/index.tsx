@@ -8,21 +8,30 @@ const theme = createTheme ({
     primary: {
       main: "#27AE60",
     },
-    secondary: {
+    // secondary: {
+    //   main: "#27AE60",
+    // },
+
+    error: {
       main: "#EB5757",
     },
+
+    success: {
+      main: "#27AE60",
+    },
+
   },
   // textField: {
   //   color: "#f1d045",
   // },
 })
 
-const Input = ({ type, id, placeholder, autoComplete, disabled, register, error }: iInputProps) => {
+const Input = ({ type, id, placeholder, autoComplete, disabled, register, error, success }: iInputProps) => {
   return (
 
     <fieldset> 
       <ThemeProvider theme = {theme}>
-        <TextField 
+        <TextField error={error} 
           fullWidth  variant="outlined" label={placeholder} type={type} id={id}
           autoComplete={autoComplete} {...register} disabled={disabled}
         />

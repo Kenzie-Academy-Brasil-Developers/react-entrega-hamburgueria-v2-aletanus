@@ -59,16 +59,16 @@ const RegisterPage = () => {
 
           <form noValidate onSubmit={handleSubmit(submit)}>
            
-            <Input type="text" id="name" label="Nome " placeholder="Digite aqui o seu nome" register={register("name")} disabled={loading}/>
+            <Input type="text" id="name" label="Nome " error={errors.name} placeholder="Digite aqui o seu nome" register={register("name")} disabled={loading}/>
             {errors.name && <p className="p-error" aria-label="Error: Name">{errors.name.message}</p>}
         
-            <Input type="text" label='Email' id="email" placeholder='Seu e-mail' register={register("email")} disabled={loading} />
+            <Input type="text" label='Email' id="email" error={errors.email} placeholder='Seu e-mail' register={register("email")} disabled={loading} />
             {errors.email && <p className="p-error" aria-label="Error: E-mail">{errors.email.message}</p>}
            
-            <Input type="password" label='Senha' id={'password'} placeholder='Sua senha' register={register("password")} disabled={loading} autoComplete='autoComplete'/>
+            <Input type="password" label='Senha' id={'password'} error={errors.password} placeholder='Sua senha' register={register("password")} disabled={loading} autoComplete='autoComplete'/>
             {errors.password && <p className="p-error" aria-label="Error: Password">{errors.password.message}</p>}
                    
-            <Input autoComplete="autoComplete" type="password" id="passwordConfirm" label="Confirmar Senha " placeholder="Confirme aqui a sua senha" register={register("passwordConfirm")} disabled={loading} />
+            <Input autoComplete="autoComplete" type="password" error={errors.passwordConfirm} id="passwordConfirm" label="Confirmar Senha " placeholder="Confirme aqui a sua senha" register={register("passwordConfirm")} disabled={loading} />
             {errors.passwordConfirm && <p className="p-error" aria-label="Error: Password Confirmation">{errors.passwordConfirm.message}</p>}
                    
             <StyledButton className="green-button-default" type="submit" disabled={loading}>

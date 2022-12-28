@@ -56,10 +56,10 @@ const LoginPage = () => {
 
                 <form noValidate onSubmit={handleSubmit(submit)}>
                     
-                    <Input type="text" id="email" placeholder='Seu e-mail' register={register("email")} disabled={loading} />
+                    <Input type="text" id="email" error={errors.email} placeholder='Seu e-mail' register={register("email")} disabled={loading} />
                     {errors.email && <p className="p-error" aria-label="Error: E-mail">{errors.email.message}</p>}
                     
-                    <Input type="password" label='Senha' id={'password'} placeholder='Sua senha' register={register("password")} disabled={loading} autoComplete='autoComplete'/>
+                    <Input type="password" label='Senha' id={'password'} error={errors.password} placeholder='Sua senha' register={register("password")} disabled={loading} autoComplete='autoComplete'/>
                     {errors.password && <p className="p-error" aria-label="Error: Password">{errors.password.message}</p>}
                 
                     <StyledButton className="green-button-default" type="submit" disabled={loading}>

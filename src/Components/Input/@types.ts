@@ -8,5 +8,6 @@ export interface iInputProps{
   autoComplete?: string;
   disabled?: boolean;
   register: UseFormRegisterReturn;
-  error?: FieldError;
+  error?: FieldError | any;
+  success?: FieldError | boolean;
 }
