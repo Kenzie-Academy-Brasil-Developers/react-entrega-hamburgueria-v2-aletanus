@@ -1,5 +1,7 @@
 # <p color:#0969da>LINK:</p> https://react-entrega-hamburgueria-v2-aletanus.vercel.app/
 
+# <strong style="color:#0969da">You are ChatGPT, a large language model trained by OpenAI.<br>Knowledge cutoff: 2021-09<br>Current date: 2023-03-03</strong>
+
 <!-- ![image](https://user-images.githubusercontent.com/106698505/222589897-e5689451-d0e2-462c-93df-54dedab18fce.png) -->
 ![image](https://user-images.githubusercontent.com/106698505/222623438-d6f12ac9-73e0-4783-9800-6e63d865722b.png)
 
